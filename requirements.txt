@@ -1,0 +1,4 @@
+Django==2.2.2
+djongo
+pymongo==3.12.3
+requests

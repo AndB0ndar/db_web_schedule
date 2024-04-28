@@ -4,26 +4,57 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5183de76-3f61-4969-b6f5-7a314e86cb71" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/db_web_schedule.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webdb/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webdb/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webdb/requirements.txt" afterDir="false" />
+    <list default="true" id="5183de76-3f61-4969-b6f5-7a314e86cb71" name="Changes" comment="Create docker-compose.yml">
+      <change afterPath="$PROJECT_DIR$/schedule/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schedule/management/commands/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schedule/management/commands/filldb.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schedule/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webdb/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/db_web_schedule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/db_web_schedule.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webdb/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webdb/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webdb/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webdb/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webdb/schedule/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webdb/schedule/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webdb/schedule/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webdb/schedule/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webdb/schedule/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webdb/schedule/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webdb/webdb/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/schedule/management/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webdb/webdb/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/webdb/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webdb/webdb/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/webdb/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webdb/webdb/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/webdb/wsgi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AndB0ndar&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:AndB0ndar/db_web_schedule.git&quot;,
+    &quot;accountId&quot;: &quot;1bbe8954-082f-47a8-b470-c369bb583408&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -41,19 +72,22 @@
     "Docker.webdb: Compose Deployment.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/arbon/Programming/OtherProjects/PycharmProjects/sase"
+    "last_opened_file_path": "/home/arbon/Programming/OtherProjects/PycharmProjects/db_web_schedule/webdb/schedule/management"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/webdb/schedule/management" />
+      <recent name="$PROJECT_DIR$/webdb/schedule/management/commands" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/webdb" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/webdb/schedule/management" />
+      <recent name="$PROJECT_DIR$/webdb" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.webdb.web: Compose Deployment">
+  <component name="RunManager" selected="Docker.docker-compose.yml.web: Compose Deployment">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="db_web_schedule" />
       <option name="ENV_FILES" value="" />
@@ -83,15 +117,15 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="webdb: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="sourceFilePath" value="webdb/docker-compose.yml" />
+          <option name="sourceFilePath" value="docker-compose.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="webdb.mongodb: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="docker-compose.yml.mongodb: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
@@ -99,12 +133,12 @@
               <option value="mongodb" />
             </list>
           </option>
-          <option name="sourceFilePath" value="webdb/docker-compose.yml" />
+          <option name="sourceFilePath" value="docker-compose.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="webdb.web: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="docker-compose.yml.web: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
@@ -112,22 +146,22 @@
               <option value="web" />
             </list>
           </option>
-          <option name="sourceFilePath" value="webdb/docker-compose.yml" />
+          <option name="sourceFilePath" value="docker-compose.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Docker.webdb.mongodb: Compose Deployment" />
-      <item itemvalue="Docker.webdb.web: Compose Deployment" />
-      <item itemvalue="Docker.webdb: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml.mongodb: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml.web: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       <item itemvalue="Python.manage" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.webdb.web: Compose Deployment" />
-        <item itemvalue="Docker.webdb: Compose Deployment" />
-        <item itemvalue="Docker.webdb.mongodb: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.web: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.mongodb: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -147,6 +181,30 @@
       <option name="presentableId" value="Default" />
       <updated>1714225990528</updated>
     </task>
+    <task id="LOCAL-00001" summary="Create docker-compose.yml">
+      <option name="closed" value="true" />
+      <created>1714245917051</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1714245917051</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Create docker-compose.yml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create docker-compose.yml" />
   </component>
 </project>
