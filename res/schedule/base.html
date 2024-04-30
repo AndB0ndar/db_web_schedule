@@ -13,6 +13,15 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
             <a href="{% url 'home' %}" class="navbar-brand">WEB Schedule</a>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="{% url 'groups' %}" class="nav-link">Groups</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'homework' %}" class="nav-link">Homeworks</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
