@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'djongo',
+    'bootstrap5',
     'schedule',
 ]
 
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'webdb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'res'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

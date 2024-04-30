@@ -1,0 +1,23 @@
+{% extends 'schedule/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{%  block content %}
+    <h1 class="mb-4">Statistic</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Number group</th>
+                <td>{{ stat.groupsCount }}</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="col">Date update</th>
+                <td>{{ stat.scrapperUpdatedDate }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

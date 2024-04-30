@@ -1,9 +1,13 @@
+from django.urls import reverse
 from djongo import models
 
 
 class TinyGroup(models.Model):
     groupName = models.CharField(max_length=15)
     groupSuffix = models.CharField(max_length=100)
+
+    def get_path(self):
+        return reverse('group', args=[self.pk])
 
     def __str__(self):
         return self.groupName
@@ -17,12 +21,7 @@ class RichGroup(models.Model):
     updatedDate = models.DateTimeField()
 
     def __str__(self):
-        return f"{self.group.name} {self.updatedDate}"
-
-
-class Time(models.Model):
-    group = models.ForeignKey(RichGroup, on_delete=models.DO_NOTHING)
-    time = models.CharField(max_length=100)
+        return f"{self.group.groupName} {self.updatedDate}"
 
 
 class DaySchedule(models.Model):
@@ -30,7 +29,7 @@ class DaySchedule(models.Model):
     day = models.CharField(max_length=100)
 
     def __str__(self):
-        return f"{self.group.name} {self.day}"
+        return f"{self.group.group.groupName} {self.day}"
 
 
 class Lesson(models.Model):
@@ -46,14 +45,19 @@ class Lesson(models.Model):
         return f"{self.name} {self.type}"
 
 
-class Week(models.Model):
-    lesson = models.ForeignKey(Lesson, on_delete=models.DO_NOTHING)
-    number = models.IntegerField()
-
-
 class Stats(models.Model):
     groupsCount = models.IntegerField()
     scrapperUpdatedDate = models.DateTimeField()
 
     def __str__(self):
         return f"Stats: Groups Count - {self.groupsCount}, Updated Date - {self.scrapperUpdatedDate}"
+
+
+class Homework(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    due_date = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.title} {self.due_date}"

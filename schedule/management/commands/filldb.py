@@ -1,8 +1,8 @@
 from django.core.management.base import BaseCommand
-import datetime
 import requests
+import json
 
-from schedule.models import RichGroup, DaySchedule, Lesson, Stats, TinyGroup
+from schedule.models import RichGroup, DaySchedule, Lesson, Stats, TinyGroup, Week
 
 
 class Command(BaseCommand):
@@ -21,7 +21,10 @@ class Command(BaseCommand):
         )
         stats.save()
 
-        groups: list[dict] = requests.get(f"{self.url}{self.groups}").json()
+        # groups: list[dict] = requests.get(f"{self.url}{self.groups}").json()  # load all groups
+        with open("res/data/data.json") as f:
+            groups = json.load(f)
+
         for group in groups:
             group_name = group['groupName']
             group_suffix = group['groupSuffix']
@@ -33,7 +36,7 @@ class Command(BaseCommand):
             ).json()
 
             for group_data in data:
-                r_group, created = RichGroup.objects.update_or_create(
+                r_group, _ = RichGroup.objects.update_or_create(
                     group=t_group,
                     defaults={
                         "remoteFile": group_data["remoteFile"],
@@ -47,15 +50,25 @@ class Command(BaseCommand):
                         group=r_group,
                         day=day_schedule_data["day"]
                     )
-                    for f_even, lesson_data_list in enumerate(day_schedule_data['odd'], day_schedule_data['even']):
-                        for lesson_data in lesson_data_list:
-                            lesson = Lesson.objects.create(
-                                day_schedule=day_schedule,
-                                is_even_week=f_even,
-                                name=lesson_data["name"],
-                                type=lesson_data["type"],
-                                tutor=lesson_data.get("tutor"),
-                                place=lesson_data.get("place"),
-                                link=lesson_data.get("link")
-                            )
-                            lesson.save()
+                    for f_even, lessons in enumerate([day_schedule_data['odd'], day_schedule_data['even']]):
+                        for dict_lesson in lessons:
+                            for lesson in dict_lesson:
+                                lsn = Lesson.objects.create(
+                                    day_schedule=day_schedule,
+                                    is_even_week=f_even,
+                                    name=lesson["name"],
+                                    type=lesson["type"],
+                                    tutor=lesson.get("tutor"),
+                                    place=lesson.get("place"),
+                                    link=lesson.get("link")
+                                )
+                                lsn.save()
+                                """
+                                if lesson['weeks'] is not None:
+                                    for number in lesson['weeks']:
+                                        week, _ = Week.objects.create(
+                                            lesson=lsn,
+                                            number=number
+                                        )
+                                        week.save()
+                                """

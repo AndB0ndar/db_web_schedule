@@ -1,0 +1,103 @@
+{% extends 'schedule/base.html' %}
+
+<style>
+    .table-hover tbody tr:hover {
+        background-color: #f5f5f5;
+        cursor: pointer;
+    }
+</style>
+
+{% block content %}
+    <h1 class="mb-4">Groups</h1>
+
+    <!-- Search form -->
+    <form id="searchForm" method="GET" action="{% url 'groups' %}">
+        <div class="row mb-3 mt-4">
+            <div class="col">
+                <input type="text" name="search_query" class="form-control" placeholder="Search by name" value="{{ search_query }}">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mt-auto">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-hover mt-4">
+        <thead class="table-dark">
+            <th scope="col" onclick="sortTable(0)" style="user-select: none;">
+                Name <span id="nameSortIcon" class="sort-icon">&#9660;</span>
+            </th>
+            <th scope="col" onclick="sortTable(1)"  style="user-select: none;">
+                Suffix <span id="suffixSortIcon" class="sort-icon">&#9660;</span>
+            </th>
+        </thead>
+        <tbody>
+            {% for group in groups %}
+            <tr onclick="window.location='{{ group.get_path }}';">
+                <td>{{ group.groupName }}</td>
+                <td>{{ group.groupSuffix }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">No groups found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        var nameSortDirection = true; // true for descending, false for ascending
+        var suffixSortDirection = true; // true for descending, false for ascending
+
+        function sortTable(columnIndex) {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.querySelector('.table');
+            switching = true;
+
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+
+                    x = rows[i].getElementsByTagName("TD")[columnIndex];
+                    y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+
+                    if (columnIndex === 0) {
+                        shouldSwitch = sortRows(x.innerHTML.toLowerCase(), y.innerHTML.toLowerCase(), nameSortDirection);
+                    } else if (columnIndex === 1) {
+                        shouldSwitch = sortRows(x.innerHTML.toLowerCase(), y.innerHTML.toLowerCase(), suffixSortDirection);
+                    }
+
+                    if (shouldSwitch) {
+                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                        switching = true;
+                    }
+                }
+            }
+
+            // Toggle sort direction
+            if (columnIndex === 0) {
+                nameSortDirection = !nameSortDirection;
+                toggleSortIcon("nameSortIcon", nameSortDirection);
+            } else if (columnIndex === 1) {
+                suffixSortDirection = !suffixSortDirection;
+                toggleSortIcon("suffixSortIcon", suffixSortDirection);
+            }
+        }
+
+        function sortRows(x, y, descending) {
+            if (descending) {
+                return x < y;
+            } else {
+                return x > y;
+            }
+        }
+
+        function toggleSortIcon(elementId, descending) {
+            var sortIcon = document.getElementById(elementId);
+            sortIcon.innerHTML = descending ? '&#9660;' : '&#9650;'; // Down arrow or up arrow
+        }
+    </script>
+{% endblock %}

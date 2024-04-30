@@ -1,0 +1,13 @@
+{% extends 'schedule/base.html' %}
+
+{%  block content %}
+    <div class="row mt-5">
+      <a href="{% url 'stats' %}" class="btn btn-secondary p-4">Schedule status</a>
+    </div>
+    <div class="row mt-5">
+      <a href="{% url 'groups' %}" class="btn btn-primary p-4">Schedule</a>
+    </div>
+    <div class="row mt-5">
+      <a href="{% url 'homework' %}" class="btn btn-primary p-4">HomeWork</a>
+    </div>
+{% endblock %}
