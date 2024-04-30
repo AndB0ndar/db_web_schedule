@@ -45,7 +45,14 @@
         </tbody>
     </table>
 
+    <div id="paginationButtons" class="mt-3 mb-3">
+        <button id="prevPageButton" class="btn btn-secondary mr-2">&#8249;</button>
+        <button id="nextPageButton" class="btn btn-secondary mr-2">&#8250;</button>
+        <span id="pageNumbers"></span>
+    </div>
+
     <script>
+        // sort table
         var nameSortDirection = true; // true for descending, false for ascending
         var suffixSortDirection = true; // true for descending, false for ascending
 
@@ -99,5 +106,74 @@
             var sortIcon = document.getElementById(elementId);
             sortIcon.innerHTML = descending ? '&#9660;' : '&#9650;'; // Down arrow or up arrow
         }
+
+
+        // navigation by table
+        var currentPage = 1;
+        var rowsPerPage = 10;
+        var totalRows = {{ groups|length }};
+
+        function displayRowsForCurrentPage() {
+            var table = document.querySelector('.table');
+            var tbody = table.querySelector('tbody');
+            var rows = tbody.rows;
+
+            var startIndex = (currentPage - 1) * rowsPerPage;
+            var endIndex = Math.min(startIndex + rowsPerPage, totalRows);
+
+            for (var i = 0; i < totalRows; i++) {
+                if (i >= startIndex && i < endIndex) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        }
+
+        function updatePagination() {
+            var totalPages = Math.ceil(totalRows / rowsPerPage);
+            var pageNumbers = document.getElementById('pageNumbers');
+            pageNumbers.innerHTML = '';
+
+            for (var i = 1; i <= totalPages; i++) {
+                var pageNumberButton = document.createElement('button');
+                pageNumberButton.textContent = i;
+                pageNumberButton.className = 'btn btn-secondary mr-2';
+                pageNumberButton.onclick = function () {
+                    currentPage = parseInt(this.textContent);
+                    displayRowsForCurrentPage();
+                    updatePagination();
+                };
+                if (i === currentPage) {
+                    pageNumberButton.classList.add('active');
+                }
+                pageNumbers.appendChild(pageNumberButton);
+            }
+
+            document.getElementById('prevPageButton').disabled = (currentPage === 1);
+            document.getElementById('nextPageButton').disabled = (currentPage === totalPages);
+        }
+
+        document.getElementById('prevPageButton').addEventListener('click', function () {
+            if (currentPage > 1) {
+                currentPage--;
+                displayRowsForCurrentPage();
+                updatePagination();
+            }
+        });
+
+        document.getElementById('nextPageButton').addEventListener('click', function () {
+            var totalPages = Math.ceil(totalRows / rowsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayRowsForCurrentPage();
+                updatePagination();
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', function () {
+            displayRowsForCurrentPage();
+            updatePagination();
+        });
     </script>
 {% endblock %}
